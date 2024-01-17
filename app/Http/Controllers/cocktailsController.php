@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cocktails;
+use App\Models\Cocktail;
+
 use Illuminate\Http\Request;
 
 class CocktailController extends Controller
 {
     public function index()
     {
-        $cocktails = Cocktails::all();
+        $cocktails = Cocktail::all();
         return view('cocktails.index', compact('cocktails'));
     }
 

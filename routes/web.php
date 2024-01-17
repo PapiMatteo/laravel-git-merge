@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/cocktails', [CocktailController::class, 'index']);
+Route::get('/cocktails', [CocktailController::class, 'index'])->name("cocktails");
