@@ -14,7 +14,7 @@ class CocktailsTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $names = ['Daiquiri', 'Negroni', 'Gin Fizz', 'Mint Julep'];
+        $names = ['Daiquiri', 'Negroni', 'Gin Fizz', 'Mint Julep', 'Margarita', 'Martini', 'Rob Roy', 'Moscow Mule'];
         $glasses = ['Collins', 'Old Fashioned', 'Nick & Nora'];
         $difficulty = ['hard', 'medium', 'easy'];
 
@@ -25,7 +25,7 @@ class CocktailsTableSeeder extends Seeder
             $cocktail = new Cocktail();
             $cocktail->name = $name;
             $cocktail->price = $faker->numberBetween(4, 20);
-            $cocktail->prep_time = $faker->time('00:i');
+            $cocktail->prep_time = $faker->numberBetween(0, 15);;
             $cocktail->glass_type = $faker->randomElement($glasses);
             $cocktail->prep_difficulty = $faker->randomElement($difficulty);
 

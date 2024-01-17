@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->smallInteger('price');
-            $table->time('prep_time');
+            $table->smallInteger('prep_time');
             $table->string('glass_type');
             $table->string('prep_difficulty');
             $table->timestamps();

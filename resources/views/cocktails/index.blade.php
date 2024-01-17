@@ -15,10 +15,10 @@
             @foreach ($cocktails as $cocktail)
                 <tr>
                     <th scope="row">{{ $cocktail->name }}</th>
-                    <td>{{ $cocktail->price }}</td>
-                    <td>{{ $cocktail->prep_time }}</td>
+                    <td>{{ $cocktail->price . ',00' . ' €' }}</td>
+                    <td>{{ $cocktail->prep_time . ' min' }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
-                    <td>{{ $cocktail->prep_difficulty }}</td>
+                    <td>{{ ucFirst($cocktail->prep_difficulty) }}</td>
                 </tr>
             @endforeach
         </tbody>
