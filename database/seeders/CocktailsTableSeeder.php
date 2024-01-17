@@ -18,16 +18,24 @@ class CocktailsTableSeeder extends Seeder
         $glasses = ['Collins', 'Old Fashioned', 'Nick & Nora'];
         $difficulty = ['hard', 'medium', 'easy'];
 
-        for($i = 0; $i < 4; $i++) {
 
-            $cocktail = new Cocktail();
-            $cocktail->name = $faker->randomElement($names);
+
+        $cocktail = new Cocktail();
+        foreach ($names as $name) {
+            $cocktail->name = $name;
+        }
+
+        for ($i = 0; $i < 4; $i++) {
+
             $cocktail->price = $faker->numberBetween(4, 20);
             $cocktail->prep_time = $faker->time('00:i');
             $cocktail->glass_type = $faker->randomElement($glasses);
             $cocktail->prep_difficulty = $faker->randomElement($difficulty);
 
+            // dd($cocktail);
             $cocktail->save();
+
+
 
             // $cocktail = new Cocktail();
             // $cocktail->name = 'Daiquiri';
@@ -37,7 +45,7 @@ class CocktailsTableSeeder extends Seeder
             // $cocktail->prep_difficulty = 'medium';
             // $cocktail->save();
 
-              // $cocktail = new Cocktail();
+            // $cocktail = new Cocktail();
             // $cocktail->name = 'Negroni';
             // $cocktail->price = 8;
             // $cocktail->prep_time = ;
@@ -45,7 +53,7 @@ class CocktailsTableSeeder extends Seeder
             // $cocktail->prep_difficulty = 'easy';
             // $cocktail->save();
 
-              // $cocktail = new Cocktail();
+            // $cocktail = new Cocktail();
             // $cocktail->name = 'Mint Julep';
             // $cocktail->price = 12;
             // $cocktail->prep_time = ;
@@ -53,7 +61,7 @@ class CocktailsTableSeeder extends Seeder
             // $cocktail->prep_difficulty = 'hard';
             // $cocktail->save();
 
-              // $cocktail = new Cocktail();
+            // $cocktail = new Cocktail();
             // $cocktail->name = 'Gin Fizz';
             // $cocktail->price = 10;
             // $cocktail->prep_time = ;
