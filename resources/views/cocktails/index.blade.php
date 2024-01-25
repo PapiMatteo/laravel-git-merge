@@ -13,6 +13,7 @@
                 <th scope="col">Prezzo</th>
                 <th scope="col">Ingredienti</th>
                 <th scope="col">Tipologia di Bicchiere</th>
+                <th scope="col">Azioni</th> <!-- Nuova colonna per le azioni -->
             </tr>
         </thead>
         <tbody>
@@ -23,10 +24,11 @@
                     <td>{{ $cocktail->ingredient }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
                     <td>
+                        <a href="{{ route('cocktails.edit', ['cocktail' => $cocktail->slug]) }}" class="btn btn-primary">Modifica</a>
                         <form action="{{ route('cocktails.destroy', ['cocktail' => $cocktail->slug]) }}" class="d-inline-block" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Cancella</button>
                         </form>
                     </td>
                 </tr>
