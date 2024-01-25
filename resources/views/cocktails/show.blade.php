@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     {{-- Project Details --}}
     <div class="container fs-5">
         <div class="d-flex justify-content-between align-items-center">
@@ -13,11 +11,18 @@
             {{-- Back Button --}}
             <a href="{{ route('cocktails.index') }}" class="btn btn-primary float-end">BACK</a>
         </div>
-        @if ($cocktail->image)
+        {{-- @if ($cocktail->hasFile('image'))
+            <div>
+                <img src="{{ asset('storage/' . $cocktail->image) }}" alt="">
+            </div>
+        @else
+            <div>
+                <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
+            </div>
+        @endif --}}
         <div>
             <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
         </div>
-        @endif
         <hr>
         <div class="mt-4">
             <strong>Prezzo:</strong>
