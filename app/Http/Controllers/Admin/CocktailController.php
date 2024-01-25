@@ -37,9 +37,11 @@ class CocktailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        return view('admin.cocktails.show', ['id' => $id]);
+        $cocktail = Cocktail::where('slug', $slug)->firstOrFail();
+
+        return view('admin.cocktails.show', ['cocktail' => $cocktail]);
     }
 
     /**
