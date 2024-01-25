@@ -25,7 +25,8 @@ class StoreCocktailRequest extends FormRequest
             'name'  => ['required', 'min:2', 'max:100'],
             'price' => ['required'],
             'ingredient' => ['required', 'min:2', 'max:250'],
-            
+            'glass_type' => ['required'],
+            'instruction' => ['required', 'min:5']
         ];
     }
 }
