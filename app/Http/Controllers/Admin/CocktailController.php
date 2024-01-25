@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCocktailRequest;
 use App\Http\Requests\UpdateCocktailRequest;
 use App\Models\Cocktail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CocktailController extends Controller
 {
@@ -34,13 +35,15 @@ class CocktailController extends Controller
     public function store(StoreCocktailRequest $request)
     {
         $form_data = $request->validated();
-
         $cocktail = new Cocktail();
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('cocktails_images', $request->image);
+            $cocktail->image = $img_path;
+        }
         $cocktail->fill($form_data);
 
         $cocktail->save();
-
-        return redirect()->route('cocktails.show', ['cocktail', $cocktail->slug]);
+        return redirect()->route('cocktails.show', ['cocktail'=> $cocktail->slug]);
     }
 
     /**
@@ -76,6 +79,7 @@ class CocktailController extends Controller
     public function destroy(Cocktail $cocktail)
     {
         $cocktail->delete();
+        Storage::delete($cocktail->image);
 
         return redirect()->route('cocktails.index')->with('message', "$cocktail->name è stato cancellato!");
     }

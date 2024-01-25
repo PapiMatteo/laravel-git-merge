@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ingredient');
             $table->string('glass_type');
             $table->text('instruction');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

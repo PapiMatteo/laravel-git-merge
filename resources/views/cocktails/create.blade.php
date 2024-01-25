@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('cocktails.store') }}" method="POST">
+                <form action="{{ route('cocktails.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -27,9 +27,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Immagine</label>
-                        <input type="text" class="form-control" id="image" name="image"
-                            value="{{ old('image') }}">
+                        <label for="image" class="form-label @error('image') is-invalid @enderror">Image</label>
+                        <input type="file" class="form-control" id="image" name="image">
                     </div>
 
                     <div class="mb-3">

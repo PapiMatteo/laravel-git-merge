@@ -19,7 +19,7 @@ class StoreCocktailRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'name'  => ['required', 'min:2', 'max:100'],
