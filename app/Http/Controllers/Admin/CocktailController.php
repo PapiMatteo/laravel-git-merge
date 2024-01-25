@@ -50,9 +50,12 @@ class CocktailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCocktailRequest, Cocktail $cocktail)
     {
-        //
+        $form_data = $request->validated();
+        $cocktail->update($form_data);
+
+        return redirect()->route('admin.cocktails.show', ['cocktail' => $cocktail->slug]);
     }
 
     /**
