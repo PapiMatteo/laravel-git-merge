@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CocktailController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CocktailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/cocktails', [CocktailController::class, 'index'])->name("cocktails");
+Route::resource('cocktails', [CocktailController::class]);
