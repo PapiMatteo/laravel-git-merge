@@ -54,10 +54,12 @@ class CocktailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cocktail $cocktail)
+    public function edit(string $slug)
     {
-        return view('cocktails.edit', ['cocktail' => $cocktail->slug]);
+        $cocktail = Cocktail::where('slug', $slug)->firstOrFail();
+        return view('cocktails.edit', ['cocktail' => $cocktail]);
     }
+    
 
     /**
      * Update the specified resource in storage.
