@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-@if (session('message'))
-    <div class="alert alert-info my-3">
-        {{ session('message') }}
-    </div>
-@endif
+
+    <a class="btn btn-success my-3" href="{{ route('cocktails.create') }}">Crea un nuovo cocktail</a>
+
+    @if (session('message'))
+        <div class="alert alert-info my-3">
+            {{ session('message') }}
+        </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
