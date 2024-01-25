@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCocktailRequest;
 use App\Http\Requests\UpdateCocktailRequest;
 use App\Models\Cocktail;
 use Illuminate\Http\Request;
@@ -30,9 +31,16 @@ class CocktailController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCocktailRequest $request)
     {
-        //
+        $form_data = $request->validated();
+
+        $cocktail = new Cocktail();
+        $cocktail->fill($form_data);
+
+        $cocktail->save();
+
+        return redirect()->route('cocktails.show', ['cocktail', $cocktail->slug]);
     }
 
     /**

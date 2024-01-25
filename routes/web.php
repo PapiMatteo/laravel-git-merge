@@ -18,10 +18,5 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('cocktails', CocktailController::class);
+Route::resource('cocktails', CocktailController::class)->parameters(['cocktails' => 'cocktail:slug']);
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::resource('cocktails', CocktailController::class)->parameters([
-        'cocktails' => 'slug',
-    ]);
-});
