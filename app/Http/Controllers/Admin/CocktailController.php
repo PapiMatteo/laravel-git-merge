@@ -48,7 +48,7 @@ class CocktailController extends Controller
      */
     public function show(Cocktail $cocktail)
     {
-        return view('cocktails.show', ['cocktail' => $cocktail->slug]);
+        return view('cocktails.show', compact('cocktails'));
     }
 
     /**
@@ -56,7 +56,7 @@ class CocktailController extends Controller
      */
     public function edit(Cocktail $cocktail)
     {
-        return view('cocktails.edit', ['cocktail' => $cocktail->slug]);
+        return view('cocktails.edit', compact('cocktails'));
     }
 
     /**
