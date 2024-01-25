@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('cocktails', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->smallInteger('price');
-            $table->smallInteger('prep_time');
+            $table->string('ingredient');
             $table->string('glass_type');
-            $table->string('prep_difficulty');
+            $table->text('instruction');
+            $table->string('image');
             $table->timestamps();
         });
     }

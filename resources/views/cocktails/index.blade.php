@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('message'))
+    <div class="alert alert-info my-3">
+        {{ session('message') }}
+    </div>
+@endif
     <table class="table">
         <thead>
             <tr>
@@ -19,6 +24,13 @@
                     <td>{{ $cocktail->prep_time . ' min' }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
                     <td>{{ ucFirst($cocktail->prep_difficulty) }}</td>
+                    <td>
+                        <form action="{{ route('cocktails.destroy', ['cocktail' => $cocktail->slug]) }}" class="d-inline-block" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
