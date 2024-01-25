@@ -12,7 +12,7 @@ class CocktailController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.cocktails.index');
     }
 
     /**
