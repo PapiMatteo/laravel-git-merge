@@ -5,7 +5,10 @@ namespace Database\Seeders;
 use App\Models\Cocktail;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use GuzzleHttp\Client;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+
 
 class CocktailsTableSeeder extends Seeder
 {
@@ -14,61 +17,32 @@ class CocktailsTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $names = ['Daiquiri', 'Negroni', 'Gin Fizz', 'Mint Julep', 'Margarita', 'Martini', 'Rob Roy', 'Moscow Mule'];
-        $glasses = ['Collins', 'Old Fashioned', 'Nick & Nora'];
-        $difficulty = ['hard', 'medium', 'easy'];
+        $rows = $this->getData();
 
-
-
-
-        foreach ($names as $name) {
+        foreach ($rows as $row) {
             $cocktail = new Cocktail();
-            $cocktail->name = $name;
-            $cocktail->price = $faker->numberBetween(4, 20);
-            $cocktail->prep_time = $faker->numberBetween(0, 15);;
-            $cocktail->glass_type = $faker->randomElement($glasses);
-            $cocktail->prep_difficulty = $faker->randomElement($difficulty);
-
-            // dd($cocktail);
+            $cocktail->name        = $row->strDrink;
+            $cocktail->glass_type  = $row->strGlass;
+            $cocktail->instruction = $row->strInstructionsIT;
+            $cocktail->image       = $row->strDrinkThumb;
+            $cocktail->price       = $faker->numberBetween(4,20);
+            $cocktail->slug        = Str::slug($cocktail->name, '&');
+            $cocktail->ingredient  = $row->strIngredient1 . ' ' . $row->strIngredient2 . ' ' . $row->strIngredient3;
             $cocktail->save();
         }
+    }
 
+    protected function getData(int $total=10) {
+        $rows   = [];
+        $url    = 'https://thecocktaildb.com/api/json/v1/1/random.php';
+        $client = new Client(['verify' => false]);
 
-
-
-
-
-        // $cocktail = new Cocktail();
-        // $cocktail->name = 'Daiquiri';
-        // $cocktail->price = 10;
-        // $cocktail->prep_time = ;
-        // $cocktail->glass_type = 'Nick & Nora';
-        // $cocktail->prep_difficulty = 'medium';
-        // $cocktail->save();
-
-        // $cocktail = new Cocktail();
-        // $cocktail->name = 'Negroni';
-        // $cocktail->price = 8;
-        // $cocktail->prep_time = ;
-        // $cocktail->glass_type = 'Old Fashioned';
-        // $cocktail->prep_difficulty = 'easy';
-        // $cocktail->save();
-
-        // $cocktail = new Cocktail();
-        // $cocktail->name = 'Mint Julep';
-        // $cocktail->price = 12;
-        // $cocktail->prep_time = ;
-        // $cocktail->glass_type = 'Julep Cup';
-        // $cocktail->prep_difficulty = 'hard';
-        // $cocktail->save();
-
-        // $cocktail = new Cocktail();
-        // $cocktail->name = 'Gin Fizz';
-        // $cocktail->price = 10;
-        // $cocktail->prep_time = ;
-        // $cocktail->glass_type = 'Collins';
-        // $cocktail->prep_difficulty = 'medium';
-        // $cocktail->save();
-
+        for ($i=0; $i < $total; $i++) { 
+            $response = $client->get($url);
+            $row      = json_decode($response->getBody());
+           
+            $rows     = [...$rows, ...$row->drinks];
+        }
+        return $rows;
     }
 }
