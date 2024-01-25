@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cocktail;
 use Illuminate\Http\Request;
 
 class CocktailController extends Controller
@@ -28,7 +29,14 @@ class CocktailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $cocktail = new Cocktail();
+        $cocktail->fill($form_data);
+
+        $cocktail->save();
+
+        return redirect()->route('cocktails.show', );
     }
 
     /**
