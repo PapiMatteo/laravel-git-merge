@@ -20,7 +20,7 @@ class CocktailController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cocktails.create');
     }
 
     /**
