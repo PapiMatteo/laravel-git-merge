@@ -77,6 +77,6 @@ class CocktailController extends Controller
     {
         $cocktail->delete();
 
-        return redirect()->route('cocktails.index')->with('message', "$cocktail->name has been deleted");
+        return redirect()->route('cocktails.index')->with('message', "$cocktail->name è stato cancellato!");
     }
 }
