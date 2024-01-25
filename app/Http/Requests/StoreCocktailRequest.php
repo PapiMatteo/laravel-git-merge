@@ -11,7 +11,7 @@ class StoreCocktailRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreCocktailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'  => ['required', 'min:2', 'max:100'],
+            'price' => ['required'],
+            'ingredient' => ['required', 'min:2', 'max:250'],
+            
         ];
     }
 }
