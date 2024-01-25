@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateCocktailRequest;
 use App\Models\Cocktail;
 use Illuminate\Http\Request;
 
@@ -55,7 +56,7 @@ class CocktailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCocktailRequest, Cocktail $cocktail)
+    public function update(UpdateCocktailRequest $request, Cocktail $cocktail)
     {
         $form_data = $request->validated();
         $cocktail->update($form_data);
