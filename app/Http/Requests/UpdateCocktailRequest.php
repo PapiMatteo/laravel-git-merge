@@ -22,12 +22,11 @@ class UpdateCocktailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:2', 'max:100'],
+            'name'  => ['required', 'min:2', 'max:100'],
             'price' => ['required'],
-            'ingredient' => ['required'],
+            'ingredient' => ['required', 'min:2', 'max:250'],
             'glass_type' => ['required'],
-            'instruction' => ['required'],
-            'image' => ['required']
+            'instruction' => ['required', 'min:5']
         ];
     }
 }

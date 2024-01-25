@@ -11,9 +11,8 @@
             <tr>
                 <th scope="col">Nome</th>
                 <th scope="col">Prezzo</th>
-                <th scope="col">Tempo di Preparazione</th>
+                <th scope="col">Ingredienti</th>
                 <th scope="col">Tipologia di Bicchiere</th>
-                <th scope="col">Difficolta Preparazione</th>
             </tr>
         </thead>
         <tbody>
@@ -21,14 +20,13 @@
                 <tr>
                     <th scope="row">{{ $cocktail->name }}</th>
                     <td>{{ $cocktail->price . ',00' . ' €' }}</td>
-                    <td>{{ $cocktail->prep_time . ' min' }}</td>
+                    <td>{{ $cocktail->ingredient }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
-                    <td>{{ ucFirst($cocktail->prep_difficulty) }}</td>
                     <td>
                         <form action="{{ route('cocktails.destroy', ['cocktail' => $cocktail->slug]) }}" class="d-inline-block" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>

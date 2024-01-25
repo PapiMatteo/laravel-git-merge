@@ -17,7 +17,7 @@ class CocktailController extends Controller
     {
         $cocktails = Cocktail::all();
 
-        return view('admin.cocktails.index', ['cocktails' => $cocktails]);
+        return view('cocktails.index', compact('cocktails'));
     }
 
     /**
@@ -25,7 +25,7 @@ class CocktailController extends Controller
      */
     public function create()
     {
-        return view('admin.cocktails.create');
+        return view('cocktails.create');
     }
 
     /**
@@ -46,19 +46,17 @@ class CocktailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show(Cocktail $cocktail)
     {
-        $cocktail = Cocktail::where('slug', $slug)->firstOrFail();
-
-        return view('admin.cocktails.show', ['cocktail' => $cocktail]);
+        return view('cocktails.show', ['cocktail' => $cocktail->slug]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cocktail $cocktail)
     {
-        //
+        return view('cocktails.edit', ['cocktail' => $cocktail->slug]);
     }
 
     /**
@@ -69,7 +67,7 @@ class CocktailController extends Controller
         $form_data = $request->validated();
         $cocktail->update($form_data);
 
-        return redirect()->route('admin.cocktails.show', ['cocktail' => $cocktail->slug]);
+        return redirect()->route('cocktails.show', ['cocktail' => $cocktail->slug]);
     }
 
     /**
