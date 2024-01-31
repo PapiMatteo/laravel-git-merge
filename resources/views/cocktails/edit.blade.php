@@ -48,7 +48,7 @@
                                 <h4>Seleziona gli ingredienti</h4>
 
                                 @foreach ($ingredients as $ingredient)
-                                    <input @checked($errors->any() ? in_array($ingredient->id, old('ingredients', [])) : $cocktail->ingredients->contains('ingredient')) type="checkbox" name="ingredients[]"
+                                    <input @checked($errors->any() ? in_array($ingredient->id, old('ingredients', [])) : $cocktail->ingredients->contains($ingredient)) type="checkbox" name="ingredients[]"
                                         id="ingredients-{{ $ingredient->id }}" value="{{ $ingredient->id }}">
                                     <label for="ingredients-{{ $ingredient->id }}">{{ $ingredient->name }}</label>
                                 @endforeach
