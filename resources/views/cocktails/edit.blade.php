@@ -8,6 +8,9 @@
             @csrf
             @method('PUT')
 
+            <input type="hidden" name="slug" value="{{ $cocktail->slug }}">
+
+
             <div class="form-group">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $cocktail->name) }}" class="form-control">
