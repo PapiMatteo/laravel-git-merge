@@ -49,23 +49,24 @@
                                     value="{{ old('glass_type') }}">
                             </div>
 
-                    <div class="mb-3">
-                        <label for="instruction" class="form-label">Istruzioni</label>
-                        <textarea class="form-control" name="instruction" id="instruction" cols="30" rows="10"></textarea>
-                    </div>
+                            <div class="mb-3">
+                                <label for="instruction" class="form-label">Istruzioni</label>
+                                <textarea class="form-control" name="instruction" id="instruction" cols="30" rows="10"></textarea>
+                            </div>
 
-                    <div class="mb-3">
-                        <h4>Seleziona gli ingredienti</h4>
+                            <div class="mb-3">
+                                <h4>Seleziona gli ingredienti</h4>
 
-                        @foreach ($ingredients as $ingredient)
-                            <input @checked(in_array($ingredient->id, old('ingredients', []))) type="checkbox" name="ingredients[]" id="ingredients-{{ $ingredient->id }}" value="{{ $ingredient->id }}">
-                            <label for="ingredients-{{ $ingredient->id }}">{{ $ingredient->name }}</label>
-                        @endforeach
+                                @foreach ($ingredients as $ingredient)
+                                    <input @checked(in_array($ingredient->id, old('ingredients', []))) type="checkbox" name="ingredients[]"
+                                        id="ingredients-{{ $ingredient->id }}" value="{{ $ingredient->id }}">
+                                    <label for="ingredients-{{ $ingredient->id }}">{{ $ingredient->name }}</label>
+                                @endforeach
 
-                        @error('ingredients')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                                @error('ingredients')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <button class="btn btn-success" type="submit">Salva</button>
                         </form>
@@ -74,6 +75,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 @endsection
