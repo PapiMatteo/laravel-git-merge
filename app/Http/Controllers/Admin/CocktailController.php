@@ -78,6 +78,13 @@ class CocktailController extends Controller
     {
         
         $form_data = $request->validated();
+        if ($request->hasFile('image')) {
+            if ($cocktail->image) {
+                Storage::delete('cocktails_images');
+            }
+            $img_path = Storage::put('cocktails_images', $request->image);
+            $cocktail->image = $img_path;
+        }
         $cocktail->update($form_data);
 
         if($request->has('ingredients')) {
