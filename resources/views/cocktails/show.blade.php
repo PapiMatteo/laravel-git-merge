@@ -13,24 +13,28 @@
         </div>
         <hr>
         <div>
-            <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
+            @if (Str::isUrl($cocktail->image))
+                <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
+            @else
+                <img style="max-width:600px;" src="{{ asset('storage/' . $cocktail->image) }}" alt="">
+            @endif
         </div>
         <hr>
         <div class="mt-4">
             <strong>Prezzo:</strong>
             {{ $cocktail->price . ',00' . '€' }}
         </div>
-    
+
         <div class="mt-4">
             <strong>Ingredienti:</strong>
             <ul>
                 @foreach ($cocktail->ingredients as $ingredient)
                     <li>{{ $ingredient->name }}</li>
                 @endforeach
-                
+
             </ul>
         </div>
-        
+
         @if ($cocktail->instruction)
             <div class="mt-4">
                 <strong>Istruzioni:</strong>

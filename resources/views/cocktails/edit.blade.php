@@ -16,10 +16,9 @@
 
                     <div class="card-body">
 
-                        <form action="{{ route('cocktails.update', ['cocktail' => $cocktail->slug]) }}" method="POST">
+                        <form action="{{ route('cocktails.update', ['cocktail' => $cocktail->slug]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
 
                             <div class="form-group">
                                 <label for="name">Nome:</label>
@@ -31,6 +30,11 @@
                                 <label for="price">Prezzo:</label>
                                 <input type="number" id="price" name="price"
                                     value="{{ old('price', $cocktail->price) }}" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label @error('image') is-invalid @enderror">Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
                             </div>
 
                             <div class="form-group">
