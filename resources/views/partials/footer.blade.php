@@ -1,5 +1,3 @@
-<footer class="mt-5">
-    <div class="container">
-        <h4>Made by Team 1</h4>
-    </div>
+<footer class="p-3">
+        <h4 class="text-end me-5">Made by Team 1</h4>
 </footer>

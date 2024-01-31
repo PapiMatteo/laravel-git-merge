@@ -3,3 +3,10 @@ footer {
     color: white;
     background-color: rgb(68, 68, 68);
 }
+
+main {
+    height: calc(100vh - 68px - 57px);
+    background-image: url(../img/bg.jpeg);
+    background-repeat: no-repeat;
+    background-size:cover;
+}

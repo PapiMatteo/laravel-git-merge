@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Project Details --}}
-    <div class="container fs-5">
+    <div class="container fs-5 py-5">
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <h2>{{ $cocktail->name }}</h2>
@@ -11,22 +11,14 @@
             {{-- Back Button --}}
             <a href="{{ route('cocktails.index') }}" class="btn btn-primary float-end">BACK</a>
         </div>
-        {{-- @if ($cocktail->hasFile('image'))
-            <div>
-                <img src="{{ asset('storage/' . $cocktail->image) }}" alt="">
-            </div>
-        @else
-            <div>
-                <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
-            </div>
-        @endif --}}
+        <hr>
         <div>
             <img style="max-width:600px;" src="{{ $cocktail->image }}" alt="">
         </div>
         <hr>
         <div class="mt-4">
             <strong>Prezzo:</strong>
-            {{ $cocktail->price . '€' }}
+            {{ $cocktail->price . ',00' . '€' }}
         </div>
     
         <div class="mt-4">
