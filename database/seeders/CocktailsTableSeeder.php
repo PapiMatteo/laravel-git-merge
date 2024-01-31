@@ -27,6 +27,7 @@ class CocktailsTableSeeder extends Seeder
             $cocktail->image       = $row->strDrinkThumb;
             $cocktail->price       = $faker->numberBetween(4,20);
             $cocktail->save();
+            $cocktail->ingredients()->attach([$faker->numberBetween(1, 2), $faker->numberBetween(3, 5)]);
         }
     }
 

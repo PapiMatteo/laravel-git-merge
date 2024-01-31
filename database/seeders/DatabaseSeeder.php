@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            CocktailsTableSeeder::class,
-            IngredientsTableSeeder::class
+            IngredientsTableSeeder::class,
+            CocktailsTableSeeder::class
         ]);
     }
 }
