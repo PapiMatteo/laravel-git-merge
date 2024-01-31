@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCocktailRequest;
 use App\Http\Requests\UpdateCocktailRequest;
 use App\Models\Cocktail;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +27,8 @@ class CocktailController extends Controller
      */
     public function create()
     {
-        return view('cocktails.create');
+        $ingredients = Ingredient::all();
+        return view('cocktails.create', compact('ingredients'));
     }
 
     /**
@@ -43,6 +45,11 @@ class CocktailController extends Controller
         $cocktail->fill($form_data);
 
         $cocktail->save();
+
+        if($request->has('ingredients')) {
+            $cocktail->ingredients()->attach($request->ingredients);
+        }
+
         return redirect()->route('cocktails.show', ['cocktail'=> $cocktail->slug]);
     }
 
@@ -59,7 +66,8 @@ class CocktailController extends Controller
      */
     public function edit(Cocktail $cocktail)
     {
-        return view('cocktails.edit', compact('cocktail'));
+        $ingredients = Ingredient::all();
+        return view('cocktails.edit', compact('cocktail', 'ingredient'));
     }
     
 
@@ -71,6 +79,12 @@ class CocktailController extends Controller
         
         $form_data = $request->validated();
         $cocktail->update($form_data);
+
+        if($request->has('ingredients')) {
+            $cocktail->ingredients()->sync($request->ingredients);
+        }else{
+            $cocktail->ingredients()->sync([]);
+        }
 
         return redirect()->route('cocktails.show', ['cocktail' => $cocktail->slug]);
     }
