@@ -57,7 +57,7 @@ class CocktailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $slug)
+    public function edit(Cocktail $cocktail)
     {
         return view('cocktails.edit', ['cocktail' => $cocktail->slug]);
     }
