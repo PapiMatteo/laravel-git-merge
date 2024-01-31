@@ -16,4 +16,8 @@ class Cocktail extends Model
         $this->attributes['name'] = $_name;
         $this->attributes['slug'] = Str::slug($_name, '&');
     }
+
+    public function ingredients() {
+        return $this->belongsToMany(Ingredient::class);
+    }
 }
