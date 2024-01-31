@@ -27,6 +27,7 @@
                     <td>{{ $cocktail->ingredient }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
                     <td>
+                        <a class="btn btn-warning" href="{{ route('cocktails.edit', ['cocktail' => $cocktail->slug]) }}">Dettagli</a>
                         <form action="{{ route('cocktails.destroy', ['cocktail' => $cocktail->slug]) }}" class="d-inline-block" method="POST">
                             @csrf
                             @method('DELETE')

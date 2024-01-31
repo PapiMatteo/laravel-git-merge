@@ -68,6 +68,7 @@ class CocktailController extends Controller
      */
     public function update(UpdateCocktailRequest $request, Cocktail $cocktail)
     {
+        
         $form_data = $request->validated();
         $cocktail->update($form_data);
 

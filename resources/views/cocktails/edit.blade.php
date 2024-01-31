@@ -8,8 +8,6 @@
             @csrf
             @method('PUT')
 
-            <input type="hidden" name="slug" value="{{ $cocktail->slug }}">
-
 
             <div class="form-group">
                 <label for="name">Nome:</label>
@@ -31,6 +29,11 @@
                 <input type="text" id="glass_type" name="glass_type" value="{{ old('glass_type', $cocktail->glass_type) }}" class="form-control">
             </div>
 
+            <div class="form-group">
+                <label for="instruction" class="form-label">Preparazione:</label>
+                <textarea class="form-control" id="instruction" rows="7"
+                    name="instruction">{{ old('instruction', $cocktail->instruction) }}</textarea>
+            </div>
             
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>
