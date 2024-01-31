@@ -28,10 +28,7 @@
             <strong>Prezzo:</strong>
             {{ $cocktail->price . '€' }}
         </div>
-        <div class="mt-4">
-            <strong>Ingredienti:</strong>
-            {{ $cocktail->ingredient . '€' }}
-        </div>
+        
         @if ($cocktail->instruction)
             <div class="mt-4">
                 <strong>Istruzioni:</strong>

@@ -44,12 +44,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="ingredient" class="form-label">Ingredienti</label>
-                        <input type="text" class="form-control" id="ingredient" name="ingredient"
-                            value="{{ old('ingredient') }}">
-                    </div>
-
-                    <div class="mb-3">
                         <label for="instruction" class="form-label">Istruzioni</label>
                         <textarea class="form-control" name="instruction" id="instruction" cols="30" rows="10"></textarea>
                     </div>

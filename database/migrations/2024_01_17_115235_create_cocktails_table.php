@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->smallInteger('price');
-            $table->string('ingredient');
             $table->string('glass_type');
             $table->text('instruction');
             $table->string('image')->nullable();

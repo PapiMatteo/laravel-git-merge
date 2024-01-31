@@ -14,7 +14,6 @@
             <tr>
                 <th scope="col">Nome</th>
                 <th scope="col">Prezzo</th>
-                <th scope="col">Ingredienti</th>
                 <th scope="col">Tipologia di Bicchiere</th>
                 <th scope="col">Azioni</th> <!-- Nuova colonna per le azioni -->
             </tr>
@@ -24,7 +23,6 @@
                 <tr>
                     <th scope="row">{{ $cocktail->name }}</th>
                     <td>{{ $cocktail->price . ',00' . ' €' }}</td>
-                    <td>{{ $cocktail->ingredient }}</td>
                     <td>{{ $cocktail->glass_type }}</td>
                     <td>
                         <a class="btn btn-warning" href="{{ route('cocktails.edit', ['cocktail' => $cocktail->slug]) }}">Dettagli</a>

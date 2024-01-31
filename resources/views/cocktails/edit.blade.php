@@ -20,11 +20,6 @@
             </div>
 
             <div class="form-group">
-                <label for="ingredient">Ingredienti:</label>
-                <input type="text" id="ingredient" name="ingredient" value="{{ old('ingredient', $cocktail->ingredient) }}" class="form-control">
-            </div>
-
-            <div class="form-group">
                 <label for="glass_type">tipo di Bicchiere:</label>
                 <input type="text" id="glass_type" name="glass_type" value="{{ old('glass_type', $cocktail->glass_type) }}" class="form-control">
             </div>
