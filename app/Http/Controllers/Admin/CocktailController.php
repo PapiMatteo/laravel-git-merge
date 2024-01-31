@@ -67,7 +67,7 @@ class CocktailController extends Controller
     public function edit(Cocktail $cocktail)
     {
         $ingredients = Ingredient::all();
-        return view('cocktails.edit', compact('cocktail', 'ingredient'));
+        return view('cocktails.edit', compact('cocktail', 'ingredients'));
     }
     
 
