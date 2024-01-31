@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Modifica Cocktail</h1>
 
-        <form action="{{ route('cocktails.update', ['cocktail' => $cocktail->slug]) }}" method="post">
+        <form action="{{ route('cocktails.update', ['cocktail' => $cocktail->slug]) }}" method="POST">
             @csrf
             @method('PUT')
 
