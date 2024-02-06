@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/cocktails', [CocktailController::class, 'index']);
+Route::get('/cocktails/{slug}', [CocktailController::class, 'show']);
