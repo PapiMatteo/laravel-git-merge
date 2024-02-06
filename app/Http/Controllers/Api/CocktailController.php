@@ -15,4 +15,23 @@ class CocktailController extends Controller
             'success' => true
         ]);
     }
+
+    public function show(string $slug){
+        $cocktail = Cocktail::with('ingredients')->where('slug', $slug)->first();
+
+        if($cocktail){
+            return response()->json([
+                'results' => $cocktail,
+                'success' => true
+            ]); 
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossibile trovare il cocktail'
+            ]);
+        }
+
+        
+    }
+
 }
